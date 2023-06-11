@@ -1,0 +1,11 @@
+{
+  "name": "kafka",
+  "version": "1.0.0",
+  "main": "sample-node.js",
+  "dependencies": {
+    "kafka-node": "^5.0.0"
+  },
+  "keywords": [],
+  "author": "keepwalking86 <nguyenvodung@gmail.com>"
+}
+
