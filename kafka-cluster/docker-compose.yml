@@ -69,6 +69,7 @@ services:
       - zookeeper-3
     ports:
       - 19092:19092
+      - 19091:9091
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181
@@ -76,8 +77,10 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       TZ: Asia/Ho_Chi_Minh
+      EXTRA_ARGS: "-javaagent:/etc/kafka/jmx_exporter/jmx_prometheus_javaagent-0.18.0.jar=9091:/etc/kafka/jmx_exporter/kafka_jmx_exporter.yaml"
     volumes:
       - kafka-01_data:/var/lib/kafka/data
+      - ./jmx-exporter:/etc/kafka/jmx_exporter/
   kafka-2:
     image: confluentinc/cp-kafka:latest
     depends_on:
@@ -86,6 +89,7 @@ services:
       - zookeeper-3
     ports:
       - 29092:29092
+      - 29091:9091
     environment:
       KAFKA_BROKER_ID: 2
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181
@@ -93,8 +97,10 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       TZ: Asia/Ho_Chi_Minh
+      EXTRA_ARGS: "-javaagent:/etc/kafka/jmx_exporter/jmx_prometheus_javaagent-0.18.0.jar=9091:/etc/kafka/jmx_exporter/kafka_jmx_exporter.yaml"
     volumes:
       - kafka-02_data:/var/lib/kafka/data
+      - ./jmx-exporter:/etc/kafka/jmx_exporter/
   kafka-3:
     image: confluentinc/cp-kafka:latest
     depends_on:
@@ -103,6 +109,7 @@ services:
       - zookeeper-3
     ports:
       - 39092:39092
+      - 39091:9091
     environment:
       KAFKA_BROKER_ID: 3
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181
@@ -110,8 +117,10 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       TZ: Asia/Ho_Chi_Minh
+      EXTRA_ARGS: "-javaagent:/etc/kafka/jmx_exporter/jmx_prometheus_javaagent-0.18.0.jar=9091:/etc/kafka/jmx_exporter/kafka_jmx_exporter.yaml"
     volumes:
       - kafka-03_data:/var/lib/kafka/data
+      - ./jmx-exporter:/etc/kafka/jmx_exporter/
 
 volumes:
   zookeeper-01_data:
