@@ -1,0 +1,15 @@
+{
+  "name": "kafka-app",
+  "version": "1.0.0",
+  "description": "A simple Kafka producer and consumer using KafkaJS",
+  "main": "producer.js",
+  "scripts": {
+    "start:producer": "node producer.js",
+    "start:consumer": "node consumer.js"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  },
+  "author": "keepwalking86",
+  "license": "MIT"
+}
